@@ -7,7 +7,7 @@ coverage
 node_modules
 logs
 dist/*
-.packageSHA
+.package.sha
 
 ### matching
 *.log
