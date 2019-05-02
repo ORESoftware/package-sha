@@ -4,7 +4,7 @@
   "description": "Semver-oriented TypeScript library skeleton.",
   "main": "dist/main.js",
   "bin": {
-    "package_sha": "cli/example.sh"
+    "package_sha": "cli/cli.js"
   },
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
@@ -30,6 +30,6 @@
   "homepage": "https://github.com/ORESoftware/typescript-library-skeleton#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^10.12.11"
+    "@types/node": "^10.12.10"
   }
 }
