@@ -10,8 +10,8 @@ const shasum = crypto.createHash('sha1');
 const str = main.getPackageString(path.resolve(process.cwd() + '/package.json'));
 const v = shasum.update(str);
 const hex = v.digest('hex');
-
 const dir = path.resolve(process.cwd() + '/.package.sha/npm');
+const argv = process.argv.slice(2);
 
 const mkdir = () => {
   try {
@@ -22,7 +22,6 @@ const mkdir = () => {
   }
 };
 
-///
 
 mkdir();
 
@@ -44,6 +43,11 @@ process.once('exit', code => {
 
 
 const writeToDir = () => {
+
+  if (argv.includes('--no-overwrite')) {
+    return;
+  }
+
   fs.writeFileSync(path.resolve(dir + '/previous.json'), str);
   fs.writeFileSync(path.resolve(dir + '/previous.sha'), hex);
   // fs.writeFileSync(path.resolve(dir + '/installed.json'), hex);
@@ -86,8 +90,9 @@ if (String(previousJSON).trim() !== str) {
   process.exit(1);
 }
 
-if (!process.argv.includes('--no-overwrite')) {
-  writeToDir();
-}
+
+writeToDir();
+process.exit(0);
+
 
 

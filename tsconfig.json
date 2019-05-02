@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "allowJs": false,
+    "rootDir": "src",
     "pretty": true,
     "resolveJsonModule": false,
     "sourceMap": false,
