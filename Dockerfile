@@ -1,15 +1,11 @@
-FROM node:10
+FROM node:11
 
-RUN apt-get update && apt-get install -y sudo
-RUN npm set unsafe-perm true
-RUN npm install -g @oresoftware/r2g
+USER root
 
-#RUN echo $(whoami)
-#RUN mkdir -p /root/repo
-#WORKDIR /root/repo
-#COPY . .
-#
-#RUN r2g run
+WORKDIR /app
 
+COPY package.json .
 
+RUN npm i && ( mkdir -p .packageSHA/npm && echo "true" > .packageSHA/npm/installed.json )
 
+CMD /bin/bash
